@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Center hub -->
+  <circle cx="24" cy="24" r="5" fill="#1D72FE"/>
+  <circle cx="24" cy="24" r="2" fill="#FFFFFF"/>
+  <!-- 6 Rays -->
+  <!-- Vertical Top -->
+  <path d="M24 19V5M24 10L20 14M24 10L28 14" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Vertical Bottom -->
+  <path d="M24 29V43M24 38L20 34M24 38L28 34" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top Right 60 deg -->
+  <path d="M28.3 21.5L40.4 14.5M34.4 18L32.2 12.5M34.4 18L39.8 20.2" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom Left 240 deg -->
+  <path d="M19.7 26.5L7.6 33.5M13.6 30L15.8 35.5M13.6 30L8.2 27.8" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom Right 300 deg -->
+  <path d="M28.3 26.5L40.4 33.5M34.4 30L39.8 27.8M34.4 30L32.2 35.5" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top Left 120 deg -->
+  <path d="M19.7 21.5L7.6 14.5M13.6 18L8.2 20.2M13.6 18L15.8 12.5" stroke="#1D72FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
