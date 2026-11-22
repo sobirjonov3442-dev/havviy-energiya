@@ -10,7 +10,7 @@ import {
   Wrench
 } from 'lucide-react';
 
-export default function Services({ onOpenServiceDetail, t, services: propServices }) {
+export default function Services({ onOpenServiceDetail, t, services: propServices, lang = 'uz' }) {
   const secT = t?.servicesSection || {
     badge: "Professional xizmatlar",
     title: "Bizning xizmatlarimiz",
@@ -19,85 +19,40 @@ export default function Services({ onOpenServiceDetail, t, services: propService
     details: "Batafsil"
   };
 
-  const servicesData = [
-    {
-      id: 1,
-      title: secT.items?.[0]?.title || "Konditsioner o'rnatish va ta'mirlash",
-      desc: secT.items?.[0]?.desc || "Barcha turdagi split va markaziy konditsionerlarni montaj qilish va ta'mirlash",
-      price: secT.items?.[0]?.price || "150 AED",
-      tag: secT.items?.[0]?.tag || "100% Kafolat",
-      icon: Snowflake,
-      image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
-      includes: [
-        "Konditsioner to'liq montaji va ulanishi",
-        "Trassa tortish va vakuumlash",
-        "Ishlashini sinovdan o'tkazish",
-        "1 yillik rasmiy kafolat hujjati"
-      ]
-    },
-    {
-      id: 2,
-      title: secT.items?.[1]?.title || "Elektr xizmatlari",
-      desc: secT.items?.[1]?.desc || "Xonadonlar va tijorat binolari uchun to'liq elektr ishlari va montaj",
-      price: secT.items?.[1]?.price || "100 AED",
-      tag: secT.items?.[1]?.tag || "Tezkor usta",
-      icon: Zap,
-      image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80",
-      includes: [
-        "Elektr nosozliklarini aniqlash va bartaraf etish",
-        "Rozetka, vikyuchatel va lyustralar o'rnatish",
-        "Qisqa tutashuv va ortiqcha yuklamani oldini olish",
-        "Tezkor 24/7 chaqiruv xizmati"
-      ]
-    },
-    {
-      id: 3,
-      title: secT.items?.[2]?.title || "Uy elektr tarmoqlari",
-      desc: secT.items?.[2]?.desc || "Kvartira va villalarda xavfsiz elektr simlarini tortish va yangilash",
-      price: secT.items?.[2]?.price || "200 AED",
-      tag: secT.items?.[2]?.tag || "Xavfsizlik",
-      icon: Home,
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-      includes: [
-        "Yangi binolarda noldan sim tortish",
-        "Eski simlarni zamonaviy mis kabellarga almashtirish",
-        "Yerga ulash (zazemleniye) tizimini o'rnatish",
-        "Texnik xavfsizlik sertifikati"
-      ]
-    },
-    {
-      id: 4,
-      title: secT.items?.[3]?.title || "Elektr panel o'rnatish",
-      desc: secT.items?.[3]?.desc || "Avtomat shchitlarini zamonaviy Yevropa standartida yig'ish va ulash",
-      price: secT.items?.[3]?.price || "250 AED",
-      tag: secT.items?.[3]?.tag || "Yevropa standarti",
-      icon: Settings,
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
-      includes: [
-        "Schneider Electric va ABB avtomatlarini terish",
-        "UZO va kuchlanish relesini to'g'ri ulash",
-        "Yuklamalarni faza bo'yicha teng taqsimlash",
-        "Markirovka va kafolat xizmati"
-      ]
-    },
-    {
-      id: 5,
-      title: secT.items?.[4]?.title || "Konditsioner tozalash",
-      desc: secT.items?.[4]?.desc || "Antibakterial chuqur tozalash, dezinfeksiya va freon quyish",
-      price: secT.items?.[4]?.price || "120 AED",
-      tag: secT.items?.[4]?.tag || "Toza havo",
-      icon: RefreshCw,
-      image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80",
-      includes: [
-        "Bosim ostida antibakterial yuvish",
-        "Mog'or va yoqimsiz hidlarni to'liq yo'qotish",
-        "Freon R410A / R32 bosimini to'ldirish",
-        "Elektr sarfini 20-30% ga kamaytirish"
-      ]
-    }
-  ];
+  const iconsList = [Snowflake, Zap, Home, Settings, RefreshCw, Wrench];
 
-  const finalServices = propServices && propServices.length > 0 ? propServices : servicesData;
+  // Tanlangan til bo'yicha xizmatlar:
+  // - Agar 'uz' bo'lsa va admin paneldan o'zgartirilgan bo'lsa, propServices ishlatiladi
+  // - Agar boshqa til (ru, en, tr) tanlansa, 100% o'sha tildagi secT.items tarjimalari ishlatiladi!
+  const finalServices = React.useMemo(() => {
+    if (lang === 'uz' && propServices && propServices.length > 0) {
+      return propServices.map((s, idx) => ({
+        ...s,
+        icon: s.icon || iconsList[idx % iconsList.length] || Wrench
+      }));
+    }
+
+    const baseItems = secT.items || [];
+    return baseItems.map((item, idx) => {
+      const fallbackProp = propServices?.[idx] || {};
+      return {
+        id: item.id || idx + 1,
+        title: item.title,
+        desc: item.desc,
+        price: item.price || fallbackProp.price || "100 AED",
+        tag: item.tag || fallbackProp.tag || "100% Kafolat",
+        icon: iconsList[idx % iconsList.length] || Wrench,
+        image: fallbackProp.image || (
+          idx === 0 ? "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" :
+          idx === 1 ? "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80" :
+          idx === 2 ? "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" :
+          idx === 3 ? "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" :
+          "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80"
+        ),
+        includes: Array.isArray(item.includes) && item.includes.length > 0 ? item.includes : (fallbackProp.includes || [])
+      };
+    });
+  }, [lang, propServices, secT]);
 
   return (
     <section id="services" className="py-8 sm:py-12 lg:py-16 w-full max-w-full overflow-hidden">

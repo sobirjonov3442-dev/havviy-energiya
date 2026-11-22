@@ -442,6 +442,25 @@ export default function App() {
 
   const t = translations[lang] || translations.uz;
 
+  // Tilga qarab hero va statistika matnlari (UZ da admin sozlamasi, boshqa tillarda 100% tarjima)
+  const heroBadge = lang === 'uz' ? (heroConfig.badge || t.hero.badge) : t.hero.badge;
+  const heroQualityTitle = lang === 'uz' ? (heroConfig.qualityCardTitle || t.hero.qualityCardTitle) : t.hero.qualityCardTitle;
+  const heroQualityDesc = lang === 'uz' ? (heroConfig.qualityCardDesc || t.hero.qualityCardDesc) : t.hero.qualityCardDesc;
+  const heroTitlePart1 = lang === 'uz' ? (heroConfig.titlePart1 || t.hero.titlePart1) : t.hero.titlePart1;
+  const heroTitlePart2 = lang === 'uz' ? (heroConfig.titlePart2 || t.hero.titlePart2) : t.hero.titlePart2;
+  const heroTitleHighlight = lang === 'uz' ? (heroConfig.titleHighlight || t.hero.titleHighlight) : t.hero.titleHighlight;
+  const heroTitlePart3 = lang === 'uz' ? (heroConfig.titlePart3 || t.hero.titlePart3) : t.hero.titlePart3;
+  const heroDesc = lang === 'uz' ? (heroConfig.desc || t.hero.desc) : t.hero.desc;
+
+  const stat1Title = lang === 'uz' ? (heroConfig.stats?.[0]?.title || t.stats.s1Val) : t.stats.s1Val;
+  const stat1Subtitle = lang === 'uz' ? (heroConfig.stats?.[0]?.subtitle || t.stats.s1Label) : t.stats.s1Label;
+  const stat2Title = lang === 'uz' ? (heroConfig.stats?.[1]?.title || t.stats.s2Val) : t.stats.s2Val;
+  const stat2Subtitle = lang === 'uz' ? (heroConfig.stats?.[1]?.subtitle || t.stats.s2Label) : t.stats.s2Label;
+  const stat3Title = lang === 'uz' ? (heroConfig.stats?.[2]?.title || t.stats.s3Val) : t.stats.s3Val;
+  const stat3Subtitle = lang === 'uz' ? (heroConfig.stats?.[2]?.subtitle || t.stats.s3Label) : t.stats.s3Label;
+  const stat4Title = lang === 'uz' ? (heroConfig.stats?.[3]?.title || t.stats.s4Val) : t.stats.s4Val;
+  const stat4Subtitle = lang === 'uz' ? (heroConfig.stats?.[3]?.subtitle || t.stats.s4Label) : t.stats.s4Label;
+
   const handleLoginSuccess = (userData) => {
     setUser(userData);
     showToast(`Xush kelibsiz, ${userData.name}!`);
@@ -902,6 +921,7 @@ export default function App() {
           onBack={() => setCurrentPage('home')}
           onBookService={(srvTitle) => showToast(`"${srvTitle}" xizmati uchun so'rovingiz qabul qilindi!`)}
           t={t}
+          lang={lang}
         />
       ) : (
         /* =========================================================================
@@ -954,10 +974,10 @@ export default function App() {
                 </div>
                 <div>
                   <div className="text-xs sm:text-sm font-black text-[#0B1528] leading-tight">
-                    {heroConfig.qualityCardTitle || t.hero.qualityCardTitle}
+                    {heroQualityTitle}
                   </div>
                   <div className="text-[11px] sm:text-xs font-bold text-[#1D72FE] leading-tight mt-0.5">
-                    {heroConfig.qualityCardDesc || t.hero.qualityCardDesc}
+                    {heroQualityDesc}
                   </div>
                 </div>
               </div>
@@ -968,20 +988,20 @@ export default function App() {
                 {/* Kichik badge: 📍 Dubayda */}
                 <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white text-[#1D72FE] font-black text-xs sm:text-sm shadow-md border border-blue-100">
                   <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#1D72FE] text-[#1D72FE]" />
-                  <span>{heroConfig.badge || t.hero.badge}</span>
+                  <span>{heroBadge}</span>
                 </div>
 
                 {/* Katta sarlavha (Tanlangan tilda) */}
                 <h1 className="text-2xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-[#0B1528] leading-[1.12] sm:leading-[1.08] tracking-tight">
-                  {heroConfig.titlePart1 || t.hero.titlePart1} <br />
-                  {heroConfig.titlePart2 || t.hero.titlePart2} <br />
-                  <span className="text-[#1D72FE]">{heroConfig.titleHighlight || t.hero.titleHighlight}</span> <br />
-                  {heroConfig.titlePart3 || t.hero.titlePart3}
+                  {heroTitlePart1} <br />
+                  {heroTitlePart2} <br />
+                  <span className="text-[#1D72FE]">{heroTitleHighlight}</span> <br />
+                  {heroTitlePart3}
                 </h1>
 
                 {/* Tavsif */}
                 <p className="text-xs sm:text-base lg:text-lg 2xl:text-xl text-slate-700 font-semibold sm:font-medium leading-relaxed max-w-lg 2xl:max-w-xl">
-                  {heroConfig.desc || t.hero.desc}
+                  {heroDesc}
                 </p>
 
                 {/* Tugmalar: Xizmatga buyurtma berish ➔ & ▶ Biz haqimizda */}
@@ -1030,10 +1050,10 @@ export default function App() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-black text-xs sm:text-lg 2xl:text-xl text-[#0B1528] leading-tight truncate">
-                    {heroConfig.stats?.[0]?.title || t.stats.s1Val}
+                    {stat1Title}
                   </div>
                   <div className="text-[10px] sm:text-sm text-slate-400 font-medium mt-0.5 truncate">
-                    {heroConfig.stats?.[0]?.subtitle || t.stats.s1Label}
+                    {stat1Subtitle}
                   </div>
                 </div>
               </div>
@@ -1045,10 +1065,10 @@ export default function App() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-black text-xs sm:text-lg 2xl:text-xl text-[#0B1528] leading-tight truncate">
-                    {heroConfig.stats?.[1]?.title || t.stats.s2Val}
+                    {stat2Title}
                   </div>
                   <div className="text-[10px] sm:text-sm text-slate-400 font-medium mt-0.5 truncate">
-                    {heroConfig.stats?.[1]?.subtitle || t.stats.s2Label}
+                    {stat2Subtitle}
                   </div>
                 </div>
               </div>
@@ -1060,10 +1080,10 @@ export default function App() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-black text-xs sm:text-lg 2xl:text-xl text-[#0B1528] leading-tight truncate">
-                    {heroConfig.stats?.[2]?.title || t.stats.s3Val}
+                    {stat3Title}
                   </div>
                   <div className="text-[10px] sm:text-sm text-slate-400 font-medium mt-0.5 truncate">
-                    {heroConfig.stats?.[2]?.subtitle || t.stats.s3Label}
+                    {stat3Subtitle}
                   </div>
                 </div>
               </div>
@@ -1075,10 +1095,10 @@ export default function App() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-black text-xs sm:text-lg 2xl:text-xl text-[#0B1528] leading-tight truncate">
-                    {heroConfig.stats?.[3]?.title || t.stats.s4Val}
+                    {stat4Title}
                   </div>
                   <div className="text-[10px] sm:text-sm text-slate-400 font-medium mt-0.5 truncate">
-                    {heroConfig.stats?.[3]?.subtitle || t.stats.s4Label}
+                    {stat4Subtitle}
                   </div>
                 </div>
               </div>
@@ -1097,6 +1117,7 @@ export default function App() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             t={t}
+            lang={lang}
             services={servicesList}
           />
 
@@ -1109,6 +1130,7 @@ export default function App() {
             favorites={favorites}
             onToggleFavorite={toggleFavorite}
             t={t}
+            lang={lang}
             products={productsList}
           />
 

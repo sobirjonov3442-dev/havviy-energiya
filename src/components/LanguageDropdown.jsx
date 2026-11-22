@@ -99,6 +99,14 @@ export default function LanguageDropdown({ lang, onSelectLang, className = "" })
   const currentLang = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0];
   const CurrentFlag = currentLang.Flag;
 
+  const dropdownTexts = {
+    uz: { title: "Tilni tanlash", select: "Tilni tanlang", badge: "Bayroqlar" },
+    ru: { title: "Выбор языка", select: "Выберите язык", badge: "Флаги" },
+    en: { title: "Select language", select: "Select Language", badge: "Flags" },
+    tr: { title: "Dil seçimi", select: "Dil seçin", badge: "Bayraklar" }
+  };
+  const curTexts = dropdownTexts[lang] || dropdownTexts.uz;
+
   return (
     <div className={`relative inline-block text-left z-50 ${className}`} ref={dropdownRef}>
       
@@ -116,7 +124,7 @@ export default function LanguageDropdown({ lang, onSelectLang, className = "" })
         }`}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        title="Tilni tanlash / Bayroqlar ro'yxati"
+        title={curTexts.title}
       >
         <div className="w-5 h-3.5 sm:w-5.5 sm:h-4 rounded-[2px] overflow-hidden shadow-2xs flex-shrink-0 border border-slate-300/80 flex items-center justify-center">
           <CurrentFlag className="w-full h-full object-cover" />
@@ -139,8 +147,8 @@ export default function LanguageDropdown({ lang, onSelectLang, className = "" })
           onClick={(e) => e.stopPropagation()}
         >
           <div className="text-[10px] font-black uppercase text-slate-400 px-3 py-1.5 tracking-wider flex items-center justify-between">
-            <span>Tilni tanlang</span>
-            <span className="text-[10px] text-[#1D72FE] font-black tracking-normal">Bayroqlar</span>
+            <span>{curTexts.select}</span>
+            <span className="text-[10px] text-[#1D72FE] font-black tracking-normal">{curTexts.badge}</span>
           </div>
 
           <div className="pt-1 space-y-1">

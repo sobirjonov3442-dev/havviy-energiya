@@ -123,7 +123,7 @@ export default function CartDrawer({
                   {/* Mahsulot ma'lumoti */}
                   <div className="flex-1 min-w-0">
                     <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate">
-                      {item.name}
+                      {t?.products?.[item.id]?.name || item.name}
                     </h4>
                     
                     <div className="text-sm font-black text-[#1D72FE] mt-1">
