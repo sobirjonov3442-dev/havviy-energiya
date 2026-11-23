@@ -775,283 +775,6 @@ export default function App() {
           </div>
 
         </div>
-
-        {/* =========================================================================
-            MOBIL SIDE MENYU (DRAWER / SLIDE-OVER — YON TOMONDAN SLAYD BO'LIB CHIQADI)
-            Foydalanuvchi talabi: Haqiqiy professional Side Drawer menyu, tartibli va chiroyli
-            ========================================================================= */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-50 xl:hidden">
-            {/* 1. Qoraytirilgan orqa fon (Backdrop overlay) */}
-            <div 
-              className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-
-            {/* 2. O'ng tomondan slayd bo'lib chiquvchi zamonaviy Side Panel */}
-            <div className="fixed inset-y-0 right-0 w-[320px] sm:w-[380px] max-w-[88vw] bg-white h-full shadow-2xl flex flex-col z-10 animate-slide-in-right overflow-hidden">
-              
-              {/* Drawer Yuqori Qismi (Header) */}
-              <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[#1D72FE] text-white flex items-center justify-center font-black">
-                    <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
-                      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                    </svg>
-                  </div>
-                  <span className="text-base font-black text-slate-900 tracking-tight">
-                    Havviy<span className="text-[#1D72FE]">Energiya</span>
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <LanguageDropdown lang={lang} onSelectLang={setLang} />
-                  <button
-                    type="button"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-8 h-8 rounded-full bg-slate-200/70 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors"
-                    aria-label="Yopish"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Drawer Asosiy Qismi (Scrollable Body) */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
-                
-                {/* SAVAT KARTASI (SIDE MENYU ENG TEPASIDA) */}
-                <div className="bg-gradient-to-r from-blue-600 via-[#1D72FE] to-indigo-600 rounded-2xl p-3.5 text-white shadow-md shadow-blue-500/20">
-                  <div className="flex items-center justify-between gap-2.5">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center relative flex-shrink-0">
-                        <ShoppingBag className="w-5 h-5 text-white" />
-                        {cartBadgeCount > 0 && (
-                          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-[10px] font-black flex items-center justify-center ring-2 ring-white">
-                            {cartBadgeCount}
-                          </span>
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-bold text-blue-100 flex items-center gap-1.5">
-                          <span>{t.nav.cart || "Savat"}</span>
-                          <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">
-                            {cartBadgeCount} ta
-                          </span>
-                        </div>
-                        <div className="text-sm font-black text-white truncate">
-                          {cart.reduce((sum, item) => sum + (Number(item.price) || 0) * (item.quantity || 1), 0).toLocaleString()} AED
-                        </div>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setIsCartOpen(true);
-                      }}
-                      className="px-3 py-1.5 rounded-xl bg-white text-[#1D72FE] hover:bg-blue-50 font-black text-xs shadow-xs flex items-center gap-1 transition-all active:scale-95 flex-shrink-0"
-                    >
-                      <span>Ochish</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Shaxsiy profil / Kirish */}
-                {user ? (
-                  <div className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        setCurrentPage('profile');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      className="flex items-center gap-2.5 text-left flex-1 min-w-0"
-                    >
-                      <div className="w-9 h-9 rounded-full bg-[#1D72FE] text-white flex items-center justify-center font-black text-xs flex-shrink-0 shadow-xs">
-                        {user.name.charAt(0).toUpperCase()}
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-black text-slate-900 truncate">{user.name}</div>
-                        <div className="text-[10px] text-[#1D72FE] font-bold">{t.nav.profile}</div>
-                      </div>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleLogout();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="text-xs text-rose-500 font-bold hover:underline px-2 py-1"
-                    >
-                      Chiqish
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      setIsAuthModalOpen(true);
-                    }}
-                    className="w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-blue-50 text-[#1D72FE] border border-blue-200 flex items-center justify-center gap-2 hover:bg-blue-100 transition-colors shadow-2xs"
-                  >
-                    <User className="w-4 h-4" />
-                    <span>{t.nav.login} / Profilga kirish</span>
-                  </button>
-                )}
-
-                {/* Admin Panel tugmasi */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCurrentPage('admin');
-                    setIsMobileMenuOpen(false);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="w-full text-left px-3.5 py-2.5 rounded-2xl font-black text-xs bg-slate-900 text-white flex items-center justify-between hover:bg-slate-800 transition-colors shadow-xs"
-                >
-                  <span className="flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-[#1D72FE]" />
-                    <span>Admin Panel</span>
-                  </span>
-                  <span className="text-[9px] bg-[#1D72FE] px-2 py-0.5 rounded-full font-black">
-                    Boshqaruv
-                  </span>
-                </button>
-
-                {/* Navigatsiya bo'limlari (Chiroyli qatorlar va Chevron bilan) */}
-                <div className="pt-1 space-y-1">
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setCurrentPage('home');
-                      setIsMobileMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs transition-colors ${
-                      currentPage === 'home' && activeTab === 'home'
-                        ? 'bg-blue-50 text-[#1D72FE]'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    }`}
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-blue-100/60 text-[#1D72FE] flex items-center justify-center flex-shrink-0">
-                        <Home className="w-3.5 h-3.5" />
-                      </span>
-                      <span>{t.nav.home}</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
-                  </button>
-
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setCurrentPage('home');
-                      setIsMobileMenuOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById('services');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 50);
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-amber-100/60 text-amber-600 flex items-center justify-center flex-shrink-0">
-                        <Wrench className="w-3.5 h-3.5" />
-                      </span>
-                      <span>{t.nav.services}</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
-                  </button>
-
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setCurrentPage('home');
-                      setIsMobileMenuOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById('shop');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 50);
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-purple-100/60 text-purple-600 flex items-center justify-center flex-shrink-0">
-                        <ShoppingBag className="w-3.5 h-3.5" />
-                      </span>
-                      <span>{t.nav.shop} (Lyustra & Lampochka)</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
-                  </button>
-
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setCurrentPage('home');
-                      setIsMobileMenuOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById('about');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 50);
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-emerald-100/60 text-emerald-600 flex items-center justify-center flex-shrink-0">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                      </span>
-                      <span>{t.nav.about}</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
-                  </button>
-
-                  <button 
-                    type="button"
-                    onClick={() => {
-                      setCurrentPage('home');
-                      setIsMobileMenuOpen(false);
-                      setTimeout(() => {
-                        const el = document.getElementById('contact');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 50);
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-xl bg-sky-100/60 text-sky-600 flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-3.5 h-3.5" />
-                      </span>
-                      <span>{t.nav.contact}</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
-                  </button>
-                </div>
-
-              </div>
-
-              {/* Drawer Pastki Qismi (Footer) */}
-              <div className="p-4 border-t border-slate-100 bg-slate-50/70 space-y-2.5">
-                <a
-                  href="tel:+971501234567"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-black shadow-2xs hover:bg-emerald-100 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>+971 50 123 4567 (24/7 Tezkor aloqa)</span>
-                </a>
-
-                <div className="text-[10px] text-center text-slate-400 font-medium">
-                  Dubay DEWA sertifikati • Rasmiy kafolat
-                </div>
-              </div>
-
-            </div>
-          </div>
-        )}
       </header>
 
       {/* =========================================================================
@@ -1376,6 +1099,283 @@ export default function App() {
         onLoginSuccess={handleLoginSuccess}
         t={t}
       />
+
+      {/* =========================================================================
+          MOBIL SIDE MENYU (DRAWER / SLIDE-OVER — YON TOMONDAN TO'LIQ VA CHROYLI CHIQADI)
+          Root darajasida render qilinadi: 100vh to'liq butun ekranni egallaydi va kesilmaydi
+          ========================================================================= */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] xl:hidden">
+          {/* 1. Qoraytirilgan orqa fon (Backdrop overlay) */}
+          <div 
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+
+          {/* 2. O'ng tomondan slayd bo'lib chiquvchi zamonaviy Side Panel (100% balandlik) */}
+          <div className="fixed inset-y-0 right-0 w-[310px] sm:w-[360px] max-w-[85vw] bg-white h-full shadow-2xl flex flex-col z-10 animate-slide-in-right overflow-hidden">
+            
+            {/* Drawer Yuqori Qismi (Header) */}
+            <div className="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/90">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-[#1D72FE] text-white flex items-center justify-center font-black">
+                  <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                  </svg>
+                </div>
+                <span className="text-base font-black text-slate-900 tracking-tight">
+                  Havviy<span className="text-[#1D72FE]">Energiya</span>
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <LanguageDropdown lang={lang} onSelectLang={setLang} />
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-8 h-8 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition-colors"
+                  aria-label="Yopish"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Drawer Asosiy Qismi (Scrollable Body) */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 no-scrollbar">
+              
+              {/* 1. SAVAT KARTASI */}
+              <div className="bg-gradient-to-r from-blue-600 via-[#1D72FE] to-indigo-600 rounded-2xl p-3 text-white shadow-md shadow-blue-500/20">
+                <div className="flex items-center justify-between gap-2.5">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center relative flex-shrink-0">
+                      <ShoppingBag className="w-4 h-4 text-white" />
+                      {cartBadgeCount > 0 && (
+                        <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-black flex items-center justify-center ring-2 ring-white">
+                          {cartBadgeCount}
+                        </span>
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-blue-100 flex items-center gap-1.5">
+                        <span>{t.nav.cart || "Savat"}</span>
+                        <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full font-bold">
+                          {cartBadgeCount} ta
+                        </span>
+                      </div>
+                      <div className="text-xs font-black text-white truncate">
+                        {cart.reduce((sum, item) => sum + (Number(item.price) || 0) * (item.quantity || 1), 0).toLocaleString()} AED
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsCartOpen(true);
+                    }}
+                    className="px-3 py-1.5 rounded-xl bg-white text-[#1D72FE] hover:bg-blue-50 font-black text-xs shadow-xs flex items-center gap-1 transition-all active:scale-95 flex-shrink-0"
+                  >
+                    <span>Ochish</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* 2. Shaxsiy profil / Kirish */}
+              {user ? (
+                <div className="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-200/80 rounded-2xl">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setCurrentPage('profile');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="flex items-center gap-2.5 text-left flex-1 min-w-0"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#1D72FE] text-white flex items-center justify-center font-black text-xs flex-shrink-0 shadow-xs">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-black text-slate-900 truncate">{user.name}</div>
+                      <div className="text-[10px] text-[#1D72FE] font-bold">{t.nav.profile}</div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleLogout();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-xs text-rose-500 font-bold hover:underline px-2 py-1"
+                  >
+                    Chiqish
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsAuthModalOpen(true);
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-blue-50 text-[#1D72FE] border border-blue-200 flex items-center justify-center gap-2 hover:bg-blue-100 transition-colors shadow-2xs"
+                >
+                  <User className="w-4 h-4" />
+                  <span>{t.nav.login} / Profilga kirish</span>
+                </button>
+              )}
+
+              {/* 3. Admin Panel tugmasi */}
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentPage('admin');
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-black text-xs bg-slate-900 text-white flex items-center justify-between hover:bg-slate-800 transition-colors shadow-xs"
+              >
+                <span className="flex items-center gap-2">
+                  <Sliders className="w-4 h-4 text-[#1D72FE]" />
+                  <span>Admin Panel</span>
+                </span>
+                <span className="text-[9px] bg-[#1D72FE] px-2 py-0.5 rounded-full font-black">
+                  Boshqaruv
+                </span>
+              </button>
+
+              {/* 4. Navigatsiya bo'limlari */}
+              <div className="pt-2 space-y-1 border-t border-slate-100">
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage('home');
+                    setIsMobileMenuOpen(false);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs transition-colors ${
+                    currentPage === 'home' && activeTab === 'home'
+                      ? 'bg-blue-50 text-[#1D72FE]'
+                      : 'text-slate-700 hover:bg-slate-50'
+                  }`}
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-blue-100/60 text-[#1D72FE] flex items-center justify-center flex-shrink-0">
+                      <Home className="w-3.5 h-3.5" />
+                    </span>
+                    <span>{t.nav.home}</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage('home');
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-amber-100/60 text-amber-600 flex items-center justify-center flex-shrink-0">
+                      <Wrench className="w-3.5 h-3.5" />
+                    </span>
+                    <span>{t.nav.services}</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage('home');
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('shop');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-purple-100/60 text-purple-600 flex items-center justify-center flex-shrink-0">
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                    </span>
+                    <span>{t.nav.shop} (Lyustra & Lampochka)</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage('home');
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('about');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-emerald-100/60 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                    </span>
+                    <span>{t.nav.about}</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+
+                <button 
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage('home');
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('contact');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <span className="w-7 h-7 rounded-lg bg-sky-100/60 text-sky-600 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-3.5 h-3.5" />
+                    </span>
+                    <span>{t.nav.contact}</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </button>
+              </div>
+
+            </div>
+
+            {/* Drawer Pastki Qismi (Footer) */}
+            <div className="p-3.5 border-t border-slate-100 bg-slate-50/80 space-y-2">
+              <a
+                href="tel:+971501234567"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-black shadow-2xs hover:bg-emerald-100 transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-emerald-600" />
+                <span>+971 50 123 4567 (24/7 Aloqa)</span>
+              </a>
+
+              <div className="text-[10px] text-center text-slate-400 font-medium">
+                Dubay DEWA sertifikati • Rasmiy kafolat
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
 
     </div>
   );
