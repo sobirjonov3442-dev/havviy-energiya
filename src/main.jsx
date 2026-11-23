@@ -33,9 +33,14 @@ class ErrorBoundary extends React.Component {
             <span className="text-3xl font-black">⚙️</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black mb-2">Ma'lumotlar tiklandi</h2>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-md mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-400 max-w-md mb-4 leading-relaxed">
             Kiritilgan xizmat yoki ma'lumotlarda nosozlik yuz berdi. Tizimni xavfsiz qayta tiklash uchun quyidagi tugmani bosing:
           </p>
+          {this.state.error && (
+            <p className="text-[11px] text-red-400 font-mono mb-6 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-red-500/20 max-w-lg truncate">
+              {this.state.error.message}
+            </p>
+          )}
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={this.handleReset}

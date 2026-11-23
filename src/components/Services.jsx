@@ -7,7 +7,8 @@ import {
   RefreshCw, 
   ArrowRight, 
   Phone,
-  Wrench
+  Wrench,
+  Sparkles
 } from 'lucide-react';
 
 export default function Services({ onOpenServiceDetail, t, services: propServices, lang = 'uz' }) {
