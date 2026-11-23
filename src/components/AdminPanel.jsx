@@ -1075,10 +1075,9 @@ export default function AdminPanel({
                     className="px-3.5 py-2.5 rounded-2xl border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:border-[#1D72FE] bg-white"
                   >
                     <option value="all">Barcha toifalar</option>
+                    <option value="chandelier">Lyustralar</option>
+                    <option value="lamp">Lampochkalar</option>
                     <option value="ac">Konditsionerlar</option>
-                    <option value="electric">Elektr jihozlari</option>
-                    <option value="accessories">Aksessuarlar</option>
-                    <option value="cables">Kabellar</option>
                   </select>
 
                 </div>
@@ -1126,6 +1125,8 @@ export default function AdminPanel({
                           <td className="py-3 px-4">
                             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 capitalize">
                               {p.category === 'ac' ? 'Konditsioner' :
+                               p.category === 'chandelier' ? 'Lyustra' :
+                               p.category === 'lamp' ? 'Lampochka' :
                                p.category === 'electric' ? 'Elektr' :
                                p.category === 'accessories' ? 'Aksessuar' : p.category}
                             </span>
@@ -1488,10 +1489,9 @@ export default function AdminPanel({
                     onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#1D72FE] bg-white"
                   >
+                    <option value="chandelier">Lyustra</option>
+                    <option value="lamp">Lampochka</option>
                     <option value="ac">Konditsioner</option>
-                    <option value="electric">Elektr jihozlari</option>
-                    <option value="accessories">Aksessuarlar</option>
-                    <option value="cables">Kabellar</option>
                   </select>
                 </div>
 

@@ -40,10 +40,9 @@ export default function ShopPage({ onBack, onAddToCart, onBuyNow, favorites = []
 
   const shopT = t?.shopSection || {
     all: "Barchasi",
-    ac: "Konditsioner",
-    electric: "Elektr jihozlari",
-    accessories: "Aksessuarlar",
-    cables: "Kabellar",
+    chandelier: "Lyustralar",
+    lamp: "Lampochkalar",
+    ac: "Konditsionerlar",
     buyNow: "Sotib olish",
     addToCart: "Savatga",
     added: "Qo'shildi",
@@ -52,11 +51,10 @@ export default function ShopPage({ onBack, onAddToCart, onBuyNow, favorites = []
   };
 
   const categories = [
-    { id: 'all', label: shopT.all },
-    { id: 'ac', label: shopT.ac },
-    { id: 'electric', label: shopT.electric },
-    { id: 'accessories', label: shopT.accessories },
-    { id: 'cables', label: shopT.cables }
+    { id: 'all', label: shopT.all || "Barchasi" },
+    { id: 'chandelier', label: shopT.chandelier || "Lyustralar" },
+    { id: 'lamp', label: shopT.lamp || "Lampochkalar" },
+    { id: 'ac', label: shopT.ac || "Konditsionerlar" }
   ];
 
   // Qidiruv, filter va saralash
