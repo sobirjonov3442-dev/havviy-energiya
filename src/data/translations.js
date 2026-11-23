@@ -109,8 +109,136 @@ export const translations = {
             "Freon R410A / R32 bosimini to'ldirish",
             "Elektr sarfini 20-30% ga kamaytirish"
           ]
+        },
+        {
+          id: 6,
+          title: "Aqlli uy tizimlarini o'rnatish",
+          desc: "Chiroq, rozetka, parda va konditsionerlarni telefon, ovoz va ssenariylar orqali boshqarish tizimi",
+          price: "300 AED",
+          tag: "Smart Home",
+          includes: [
+            "Telefon orqali boshqariladigan aqlli vikyuchatellar va rozetkalar",
+            "Ovozli boshqaruv (Siri, Google Assistant, Alisa) sozlash",
+            "Avtomatlashtirilgan ssenariylar («Xayrli tong», «Xayrli tun»)",
+            "Aqlli parda, datchiklar va konditsioner integratsiyasi"
+          ]
         }
       ]
+    },
+    electricalProblems: {
+      badge: "Tezkor Yechimlar",
+      title: "Elektr: tez-tez uchraydigan muammolar",
+      subtitle: "Biz eng ko'p tuzatadigan muammolar va yechimlari. Shulardan biri bo'lsa, yozing.",
+      btnText: "WhatsApp orqali yozish",
+      items: [
+        {
+          id: 1,
+          problem: "Rozetka qiziydi yoki kuyib hid chiqaradi",
+          solution: "Kontakt yoki rozetkani almashtiramiz, sim va yuklamani tekshiramiz."
+        },
+        {
+          id: 2,
+          problem: "Avtomat tushib qoladi",
+          solution: "Qisqa tutashuv yoki ortiqcha yuklamani topib, sababini bartaraf etamiz."
+        },
+        {
+          id: 3,
+          problem: "Chiroq miltillaydi yoki lampa o'chadi",
+          solution: "Kontakt, drayver va vikyuchatelni tekshiramiz, nosozini almashtiramiz."
+        },
+        {
+          id: 4,
+          problem: "Eski simlar, uchqun chiqadi",
+          solution: "Qismini yoki butun liniyani yangi kabelga almashtiramiz."
+        },
+        {
+          id: 5,
+          problem: "Shchit shovqin qiladi yoki qiziydi",
+          solution: "Ulanishlarni tekshiramiz, avtomatlarni va kerak bo'lsa shchitni almashtiramiz."
+        }
+      ]
+    },
+    acSection: {
+      badge: "ALOHIDA XIZMAT",
+      title: "Konditsionerlar",
+      subtitle: "Dubay iqlimiga mos professional konditsioner servisi va texnik xizmati",
+      askWhatsapp: "WhatsApp'da so'rash",
+      items: [
+        {
+          id: "clean",
+          title: "Tozalash",
+          badge: "Gigiyenik tozalash",
+          features: [
+            "Ichki va tashqi blokni tozalash",
+            "Filtr va drenajni tozalash"
+          ]
+        },
+        {
+          id: "repair",
+          title: "Ta'mirlash",
+          badge: "Sababini tez topamiz",
+          features: [
+            "Sovutmaydi yoki kuchsiz sovutadi",
+            "Suv oqadi yoki shovqin qiladi",
+            "Yonmaydi, displeyda xato chiqadi"
+          ]
+        },
+        {
+          id: "install",
+          title: "Yangi o'rnatish",
+          badge: "Kalit topshirig'i",
+          features: [
+            "Bloklar va trassani o'rnatish",
+            "Elektr va avtomatni ulash",
+            "Ishga tushirish va qisqa yo'riqnoma"
+          ]
+        }
+      ]
+    },
+    smartHomeSection: {
+      badge: "Kelajak texnologiyasi",
+      title: "Aqlli uy",
+      subtitle: "Chiroq, rozetka, parda va konditsioner telefon, ovoz yoki jadval bo'yicha boshqariladi.",
+      simPhoneControl: "Telefondan boshqarish",
+      simLightOn: "Chiroq: YONIQ",
+      simLightOff: "Chiroq: O'CHIQ",
+      simHint: "Chiroqni yoqish yoki o'chirish uchun vikyuchatelni bosing",
+      features: [
+        {
+          id: 1,
+          icon: "Smartphone",
+          text: "Telefon orqali boshqariladigan aqlli vikyuchatel va rozetkalar"
+        },
+        {
+          id: 2,
+          icon: "Mic",
+          text: "Ovoz bilan: «yotoqxonadagi chiroqni yoq»"
+        },
+        {
+          id: 3,
+          icon: "Sun",
+          text: "Ssenariy: «Xayrli tong» va «Xayrli tun» bir bosishda"
+        },
+        {
+          id: 4,
+          icon: "Blinds",
+          text: "Aqlli parda, datchiklar va konditsioner nazorati"
+        }
+      ],
+      orderBtn: "Aqlli uyga buyurtma berish"
+    },
+    howItWorks: {
+      title: "Qanday ishlaydi",
+      subtitle: "Xizmatdan foydalanish oson va tezkor 2 ta qadamda",
+      step1Title: "1. Yozing yoki rasm yuboring",
+      step1Desc: "Elektr, konditsioner yoki aqlli uy bo'yicha muammo yoki rejangizni ayting.",
+      step2Title: "2. Narx va vaqtni oling",
+      step2Desc: "Narx va vaqt ish boshlanishidan oldin aniq va oshkora kelishiladi.",
+      contactBannerTitle: "Biz bilan bog'laning",
+      contactBannerSubtitle: "Butun Dubay, 24/7",
+      phone: "+971 50 123 4567",
+      whatsappBtn: "WhatsApp",
+      callBtn: "Qo'ng'iroq"
     },
     shopSection: {
       title: "Mahsulotlar do'koni",
@@ -467,8 +595,136 @@ export const translations = {
             "Заправка оригинальным фреоном R410A / R32",
             "Снижение расхода электричества на 20-30%"
           ]
+        },
+        {
+          id: 6,
+          title: "Установка систем «Умный дом»",
+          desc: "Управление освещением, розетками, шторами и климатом с телефона или голосом",
+          price: "300 AED",
+          tag: "Smart Home",
+          includes: [
+            "Умные выключатели и розетки с управлением со смартфона",
+            "Настройка голосового управления (Siri, Google, Алиса)",
+            "Сценарии «Доброе утро» и «Спокойной ночи» в один клик",
+            "Интеграция умных штор, датчиков и кондиционеров"
+          ]
         }
       ]
+    },
+    electricalProblems: {
+      badge: "Быстрые решения",
+      title: "Электрика: частые проблемы",
+      subtitle: "Проблемы, которые мы устраняем чаще всего. Если у вас одна из них — напишите нам.",
+      btnText: "Написать в WhatsApp",
+      items: [
+        {
+          id: 1,
+          problem: "Розетка греется или издает запах гари",
+          solution: "Меняем контакт или розетку, проверяем сечение провода и нагрузку."
+        },
+        {
+          id: 2,
+          problem: "Выбивает автомат в щитке",
+          solution: "Находим короткое замыкание или перегрузку и устраняем причину."
+        },
+        {
+          id: 3,
+          problem: "Мигает свет или гаснет лампа",
+          solution: "Проверяем контакты, драйвер и выключатель, заменяем неисправные детали."
+        },
+        {
+          id: 4,
+          problem: "Старая проводка, летят искры",
+          solution: "Меняем поврежденный участок или всю линию на новый кабель."
+        },
+        {
+          id: 5,
+          problem: "Щиток гудит или нагревается",
+          solution: "Проверяем протяжку соединений, автоматы и при необходимости меняем щит."
+        }
+      ]
+    },
+    acSection: {
+      badge: "ОТДЕЛЬНАЯ УСЛУГА",
+      title: "Кондиционеры",
+      subtitle: "Профессиональный сервис и ремонт кондиционеров в климате Дубая",
+      askWhatsapp: "Спросить в WhatsApp",
+      items: [
+        {
+          id: "clean",
+          title: "Чистка",
+          badge: "Гигиеническая чистка",
+          features: [
+            "Чистка внутреннего и внешнего блоков",
+            "Промывка фильтров и дренажной системы"
+          ]
+        },
+        {
+          id: "repair",
+          title: "Ремонт",
+          badge: "Быстро найдем причину",
+          features: [
+            "Не охлаждает или дует слабый воздух",
+            "Течет вода или издает посторонний шум",
+            "Не включается, ошибка на дисплее"
+          ]
+        },
+        {
+          id: "install",
+          title: "Новая установка",
+          badge: "Под ключ",
+          features: [
+            "Монтаж блоков и прокладка трассы",
+            "Подключение электрики и автоматов",
+            "Пусконаладка и краткий инструктаж"
+          ]
+        }
+      ]
+    },
+    smartHomeSection: {
+      badge: "Технологии будущего",
+      title: "Умный дом",
+      subtitle: "Освещение, розетки, шторы и кондиционеры управляются с телефона, голосом или по расписанию.",
+      simPhoneControl: "Управление со смартфона",
+      simLightOn: "Освещение: ВКЛЮЧЕНО",
+      simLightOff: "Освещение: ВЫКЛЮЧЕНО",
+      simHint: "Нажмите на переключатель, чтобы включить или выключить свет",
+      features: [
+        {
+          id: 1,
+          icon: "Smartphone",
+          text: "Умные выключатели и розетки, управляемые со смартфона"
+        },
+        {
+          id: 2,
+          icon: "Mic",
+          text: "Голосом: «включи свет в спальне» (Siri, Google, Алиса)"
+        },
+        {
+          id: 3,
+          icon: "Sun",
+          text: "Сценарии: «Доброе утро» и «Спокойной ночи» в одно касание"
+        },
+        {
+          id: 4,
+          icon: "Blinds",
+          text: "Умные карнизы, датчики и контроль кондиционера"
+        }
+      ],
+      orderBtn: "Заказать систему Умный дом"
+    },
+    howItWorks: {
+      title: "Как это работает",
+      subtitle: "Простой и быстрый заказ услуг всего в 2 шага",
+      step1Title: "1. Напишите или отправьте фото",
+      step1Desc: "Опишите задачу по электрике, кондиционеру или умному дому.",
+      step2Title: "2. Получите стоимость и время",
+      step2Desc: "Точная цена и время согласуются до начала любых работ.",
+      contactBannerTitle: "Свяжитесь с нами",
+      contactBannerSubtitle: "Работаем 24/7 по всему Дубаю",
+      phone: "+971 50 123 4567",
+      whatsappBtn: "WhatsApp",
+      callBtn: "Позвонить"
     },
     shopSection: {
       title: "Каталог товаров",
@@ -825,8 +1081,136 @@ export const translations = {
             "R410A / R32 eco refrigerant pressure refill",
             "Up to 20-30% reduction in electricity bills"
           ]
+        },
+        {
+          id: 6,
+          title: "Smart Home Automation Setup",
+          desc: "Control lighting, sockets, curtains, and air conditioning from your phone or voice",
+          price: "300 AED",
+          tag: "Smart Home",
+          includes: [
+            "Smart switches and sockets controlled via smartphone",
+            "Voice assistant setup (Siri, Google Assistant, Alexa)",
+            "One-tap automation scenes ('Good Morning', 'Good Night')",
+            "Smart curtains, climate and presence sensors integration"
+          ]
         }
       ]
+    },
+    electricalProblems: {
+      badge: "Quick Solutions",
+      title: "Electrical: Common Problems",
+      subtitle: "The most frequent electrical issues we solve daily. If you face any, message us.",
+      btnText: "Message on WhatsApp",
+      items: [
+        {
+          id: 1,
+          problem: "Socket is overheating or smells burnt",
+          solution: "We inspect contacts, replace the outlet, and verify cable gauge and load."
+        },
+        {
+          id: 2,
+          problem: "Circuit breaker keeps tripping",
+          solution: "We detect short circuits or overloads and eliminate the root cause."
+        },
+        {
+          id: 3,
+          problem: "Lights flicker or bulbs go off",
+          solution: "We inspect wiring contacts, drivers, and switches, replacing faulty components."
+        },
+        {
+          id: 4,
+          problem: "Old wiring with sparking",
+          solution: "We replace the damaged section or entire line with modern high-grade cables."
+        },
+        {
+          id: 5,
+          problem: "Breaker panel buzzes or gets hot",
+          solution: "We tighten connections, inspect breakers, and replace panel if necessary."
+        }
+      ]
+    },
+    acSection: {
+      badge: "SPECIALIZED SERVICE",
+      title: "Air Conditioners",
+      subtitle: "Professional AC maintenance, deep cleaning, and repairs tailored for Dubai",
+      askWhatsapp: "Ask on WhatsApp",
+      items: [
+        {
+          id: "clean",
+          title: "Deep Cleaning",
+          badge: "Hygienic Clean",
+          features: [
+            "Indoor and outdoor unit pressure cleaning",
+            "Filter washing and drainage pipe flushing"
+          ]
+        },
+        {
+          id: "repair",
+          title: "Repairs",
+          badge: "Fast Diagnosis",
+          features: [
+            "Not cooling or weak airflow",
+            "Water leaking or unusual noise",
+            "Unit won't start, error code on display"
+          ]
+        },
+        {
+          id: "install",
+          title: "New Installation",
+          badge: "Turnkey Service",
+          features: [
+            "Unit mounting and copper piping installation",
+            "Electrical connection and breaker wiring",
+            "Commissioning and user orientation"
+          ]
+        }
+      ]
+    },
+    smartHomeSection: {
+      badge: "Future Tech",
+      title: "Smart Home",
+      subtitle: "Lighting, sockets, curtains, and AC controlled by phone, voice, or smart schedules.",
+      simPhoneControl: "Smartphone Control",
+      simLightOn: "Lights: ON",
+      simLightOff: "Lights: OFF",
+      simHint: "Toggle the switch to turn the lights on or off",
+      features: [
+        {
+          id: 1,
+          icon: "Smartphone",
+          text: "Smart switches and power sockets managed via smartphone app"
+        },
+        {
+          id: 2,
+          icon: "Mic",
+          text: "Voice commands: «turn on bedroom lights» (Siri, Google, Alexa)"
+        },
+        {
+          id: 3,
+          icon: "Sun",
+          text: "Scenes: «Good morning» and «Good night» at a single tap"
+        },
+        {
+          id: 4,
+          icon: "Blinds",
+          text: "Smart motorized curtains, sensors, and AC climate control"
+        }
+      ],
+      orderBtn: "Request Smart Home Consultation"
+    },
+    howItWorks: {
+      title: "How It Works",
+      subtitle: "Quick, hassle-free service in just 2 simple steps",
+      step1Title: "1. Message or send photos",
+      step1Desc: "Tell us about your electrical, AC, or smart home requirement.",
+      step2Title: "2. Get clear price and timing",
+      step2Desc: "Price and arrival time are confirmed transparently before work begins.",
+      contactBannerTitle: "Contact Us Now",
+      contactBannerSubtitle: "Serving all Dubai 24/7 round the clock",
+      phone: "+971 50 123 4567",
+      whatsappBtn: "WhatsApp",
+      callBtn: "Call Now"
     },
     shopSection: {
       title: "Products Store",
@@ -1183,8 +1567,136 @@ export const translations = {
             "R410A / R32 çevre dostu gaz dolumu",
             "Elektrik tüketiminde %20-30 tasarruf"
           ]
+        },
+        {
+          id: 6,
+          title: "Akıllı Ev Otomasyonu Kurulumu",
+          desc: "Aydınlatma, priz, perde ve klimaları telefon ve ses ile akıllı kontrol etme sistemi",
+          price: "300 AED",
+          tag: "Smart Home",
+          includes: [
+            "Akıllı telefon kontrollü anahtar ve priz sistemleri",
+            "Sesli asistan kurulumu (Siri, Google, Alexa)",
+            "Tek tıkla «Günaydın» ve «İyi Geceler» otomasyon senaryoları",
+            "Akıllı perde, sensör ve klima entegrasyonu"
+          ]
         }
       ]
+    },
+    electricalProblems: {
+      badge: "Hızlı Çözümler",
+      title: "Elektrik: Sık Karşılaşılan Sorunlar",
+      subtitle: "En sık çözdüğümüz elektrik arızaları ve çözümleri. Bunlardan biri varsa hemen yazın.",
+      btnText: "WhatsApp ile Yazın",
+      items: [
+        {
+          id: 1,
+          problem: "Priz ısınıyor veya yanık kokusu geliyor",
+          solution: "Kontak veya prizi değiştirir, kablo kesiti ve yükü kontrol ederiz."
+        },
+        {
+          id: 2,
+          problem: "Sigorta sürekli atıyor",
+          solution: "Kısa devre veya aşırı yükü tespit edip arıza nedenini gideririz."
+        },
+        {
+          id: 3,
+          problem: "Işıklar titriyor veya lamba sönüyor",
+          solution: "Kontakları, sürücüyü ve anahtarı test edip arızalı parçayı yenileriz."
+        },
+        {
+          id: 4,
+          problem: "Eski kablolarda kıvılcım çıkıyor",
+          solution: "Hasarlı bölümü veya hattı yeni yüksek kaliteli kablolarla değiştiririz."
+        },
+        {
+          id: 5,
+          problem: "Elektrik panosu ses yapıyor veya ısınıyor",
+          solution: "Bağlantıları sıkar, sigortaları kontrol eder ve gerekirse panoyu yenileriz."
+        }
+      ]
+    },
+    acSection: {
+      badge: "ÖZEL HİZMET",
+      title: "Klimalar",
+      subtitle: "Dubai iklimine özel profesyonel klima bakımı, temizliği ve onarımı",
+      askWhatsapp: "WhatsApp'tan Sor",
+      items: [
+        {
+          id: "clean",
+          title: "Temizlik",
+          badge: "Hijyenik Temizlik",
+          features: [
+            "İç ve dış ünite basınçlı temizliği",
+            "Filtre ve drenaj hattı yıkama"
+          ]
+        },
+        {
+          id: "repair",
+          title: "Onarım",
+          badge: "Hızlı Teşhis",
+          features: [
+            "Soğutmuyor veya hava üflemesi zayıf",
+            "Su damlatıyor veya ses yapıyor",
+            "Açılmıyor, ekranda arıza kodu veriyor"
+          ]
+        },
+        {
+          id: "install",
+          title: "Yeni Montaj",
+          badge: "Anahtar Teslim",
+          features: [
+            "Ünite montajı ve bakır boru hattı çekimi",
+            "Elektrik ve sigorta bağlantıları",
+            "Devreye alma ve kullanım bilgilendirmesi"
+          ]
+        }
+      ]
+    },
+    smartHomeSection: {
+      badge: "Geleceğin Teknolojisi",
+      title: "Akıllı Ev",
+      subtitle: "Aydınlatma, priz, perde ve klimalar telefon, ses veya zamanlama ile kontrol edilir.",
+      simPhoneControl: "Telefondan Kontrol",
+      simLightOn: "Işıklar: AÇIK",
+      simLightOff: "Işıklar: KAPALI",
+      simHint: "Işığı açıp kapatmak için anahtara tıklayın",
+      features: [
+        {
+          id: 1,
+          icon: "Smartphone",
+          text: "Akıllı telefon uygulamasıyla yönetilen anahtar ve prizler"
+        },
+        {
+          id: 2,
+          icon: "Mic",
+          text: "Sesle komut: «yatak odasının ışığını aç» (Siri, Google, Alexa)"
+        },
+        {
+          id: 3,
+          icon: "Sun",
+          text: "Senaryolar: Tek dokunuşla «Günaydın» ve «İyi geceler»"
+        },
+        {
+          id: 4,
+          icon: "Blinds",
+          text: "Akıllı motorlu perde, sensörler ve klima kontrolü"
+        }
+      ],
+      orderBtn: "Akıllı Ev Sistemi Talep Et"
+    },
+    howItWorks: {
+      title: "Nasıl Çalışır",
+      subtitle: "Sadece 2 basit adımda hızlı ve güvenilir servis",
+      step1Title: "1. Yazın veya fotoğraf gönderin",
+      step1Desc: "Elektrik, klima veya akıllı ev ihtiyacınızı bize bildirin.",
+      step2Title: "2. Fiyat ve saati netleştirin",
+      step2Desc: "İş başlamadan önce fiyat ve varış saati şeffaf şekilde belirlenir.",
+      contactBannerTitle: "Bizimle İletişime Geçin",
+      contactBannerSubtitle: "Tüm Dubai genelinde 7/24 hizmetinizdeyiz",
+      phone: "+971 50 123 4567",
+      whatsappBtn: "WhatsApp",
+      callBtn: "Hemen Ara"
     },
     shopSection: {
       title: "Ürün Mağazası",

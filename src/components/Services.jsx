@@ -19,7 +19,7 @@ export default function Services({ onOpenServiceDetail, t, services: propService
     details: "Batafsil"
   };
 
-  const iconsList = [Snowflake, Zap, Home, Settings, RefreshCw, Wrench];
+  const iconsList = [Snowflake, Zap, Home, Settings, RefreshCw, Sparkles];
 
   // Tanlangan til bo'yicha xizmatlar:
   // - Agar 'uz' bo'lsa va admin paneldan o'zgartirilgan bo'lsa, propServices ishlatiladi
@@ -28,7 +28,7 @@ export default function Services({ onOpenServiceDetail, t, services: propService
     if (lang === 'uz' && propServices && propServices.length > 0) {
       return propServices.map((s, idx) => ({
         ...s,
-        icon: s.icon || iconsList[idx % iconsList.length] || Wrench
+        icon: s.icon || iconsList[idx % iconsList.length] || Sparkles
       }));
     }
 
@@ -41,13 +41,14 @@ export default function Services({ onOpenServiceDetail, t, services: propService
         desc: item.desc,
         price: item.price || fallbackProp.price || "100 AED",
         tag: item.tag || fallbackProp.tag || "100% Kafolat",
-        icon: iconsList[idx % iconsList.length] || Wrench,
+        icon: iconsList[idx % iconsList.length] || Sparkles,
         image: fallbackProp.image || (
           idx === 0 ? "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" :
           idx === 1 ? "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80" :
           idx === 2 ? "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" :
           idx === 3 ? "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" :
-          "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80"
+          idx === 4 ? "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80" :
+          "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80"
         ),
         includes: Array.isArray(item.includes) && item.includes.length > 0 ? item.includes : (fallbackProp.includes || [])
       };
@@ -86,7 +87,7 @@ export default function Services({ onOpenServiceDetail, t, services: propService
         {/* =========================================================================
             2. MOBILDA 1 QATORDA 2 TADAN KARTA: grid-cols-2 (Talab 1:1 bajarildi)
             ========================================================================= */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-5 2xl:gap-6 w-full max-w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2.5 sm:gap-4 lg:gap-5 2xl:gap-6 w-full max-w-full">
           {finalServices.map((item) => {
             const IconComponent = item.icon || Wrench;
             return (
