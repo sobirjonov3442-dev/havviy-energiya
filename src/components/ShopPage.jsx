@@ -42,7 +42,6 @@ export default function ShopPage({ onBack, onAddToCart, onBuyNow, favorites = []
     all: "Barchasi",
     chandelier: "Lyustralar",
     lamp: "Lampochkalar",
-    ac: "Konditsionerlar",
     buyNow: "Sotib olish",
     addToCart: "Savatga",
     added: "Qo'shildi",
@@ -53,8 +52,7 @@ export default function ShopPage({ onBack, onAddToCart, onBuyNow, favorites = []
   const categories = [
     { id: 'all', label: shopT.all || "Barchasi" },
     { id: 'chandelier', label: shopT.chandelier || "Lyustralar" },
-    { id: 'lamp', label: shopT.lamp || "Lampochkalar" },
-    { id: 'ac', label: shopT.ac || "Konditsionerlar" }
+    { id: 'lamp', label: shopT.lamp || "Lampochkalar" }
   ];
 
   // Qidiruv, filter va saralash

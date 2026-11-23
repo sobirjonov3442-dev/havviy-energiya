@@ -82,7 +82,7 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         // Yangi talab bo'yicha do'konda lyustra, lampochka va konditsionerlar bo'lishini ta'minlaymiz
-        if (Array.isArray(parsed) && parsed.some(p => p.category === 'chandelier')) {
+        if (Array.isArray(parsed) && parsed.some(p => p.category === 'chandelier') && !parsed.some(p => p.category === 'ac')) {
           return parsed;
         }
       }
@@ -926,7 +926,7 @@ export default function App() {
                 className="w-full text-left px-3.5 py-2 rounded-xl font-bold text-xs text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-slate-400" />
-                <span>{t.nav.shop} (Lyustra, Lampochka, Konditsioner)</span>
+                <span>{t.nav.shop} (Lyustralar va Lampochkalar)</span>
               </button>
 
               <button 

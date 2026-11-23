@@ -1077,7 +1077,6 @@ export default function AdminPanel({
                     <option value="all">Barcha toifalar</option>
                     <option value="chandelier">Lyustralar</option>
                     <option value="lamp">Lampochkalar</option>
-                    <option value="ac">Konditsionerlar</option>
                   </select>
 
                 </div>
@@ -1491,7 +1490,6 @@ export default function AdminPanel({
                   >
                     <option value="chandelier">Lyustra</option>
                     <option value="lamp">Lampochka</option>
-                    <option value="ac">Konditsioner</option>
                   </select>
                 </div>
 
