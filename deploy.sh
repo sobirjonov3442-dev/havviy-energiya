@@ -60,6 +60,9 @@ echo ""
 echo "📂 [2/6] Loyiha fayllari yangilanmoqda ($PROJECT_DIR)..."
 mkdir -p /var/www
 
+git config --global --add safe.directory "$PROJECT_DIR" 2>/dev/null || true
+git config --global --add safe.directory "*" 2>/dev/null || true
+
 if [ -d "$PROJECT_DIR/.git" ]; then
   echo "Mavjud repozitoriya yangilanmoqda (git pull)..."
   cd "$PROJECT_DIR"
