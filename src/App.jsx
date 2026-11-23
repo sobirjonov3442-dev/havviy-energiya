@@ -30,10 +30,6 @@ import CartDrawer from './components/CartDrawer';
 import LanguageDropdown from './components/LanguageDropdown';
 import Services from './components/Services';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import ElectricalProblems from './components/ElectricalProblems';
-import ACServices from './components/ACServices';
-import SmartHome from './components/SmartHome';
-import HowItWorks from './components/HowItWorks';
 import About from './components/About';
 import Contact from './components/Contact';
 import Shop from './components/Shop';
@@ -643,21 +639,6 @@ export default function App() {
             <button
               onClick={() => {
                 setCurrentPage('home');
-                setActiveTab('smart-home');
-                setTimeout(() => {
-                  const el = document.getElementById('smart-home');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 50);
-              }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-full text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200 transition-colors shadow-2xs"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-              <span>{t.smartHomeSection?.title || "Aqlli uy"}</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setCurrentPage('home');
                 setActiveTab('shop');
                 setTimeout(() => {
                   const el = document.getElementById('shop');
@@ -1051,47 +1032,6 @@ export default function App() {
           />
 
           {/* =========================================================================
-              2.5. TEZKOR YECHIMLAR, KONDITSIONERLAR, AQLLI UY VA QANDAY ISHLAYDI
-              (1:1 REFERENCE RASM BO'YICHA YUQORI KONVERSIYALI BLOK)
-              ========================================================================= */}
-          <div className="w-full max-w-[1920px] mx-auto px-3.5 sm:px-8 lg:px-12 2xl:px-16 my-8 sm:my-14">
-            <div className="rounded-3xl sm:rounded-[36px] bg-[#0A1128] border border-blue-900/40 p-4 sm:p-8 lg:p-12 shadow-2xl relative overflow-hidden">
-              {/* Orqa fon nozik nurlar */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
-              {/* 1. Elektr: tez-tez uchraydigan muammolar */}
-              <ElectricalProblems t={t} />
-
-              {/* Ajratuvchi chiziq */}
-              <div className="my-6 sm:my-8 border-t border-slate-800/80"></div>
-
-              {/* 2. Konditsionerlar: Alohida xizmat */}
-              <ACServices t={t} />
-
-              {/* Ajratuvchi chiziq */}
-              <div className="my-6 sm:my-8 border-t border-slate-800/80"></div>
-
-              {/* 3. Aqlli uy (Smart Home) */}
-              <SmartHome 
-                t={t} 
-                onOpenServiceDetail={() => {
-                  const smartSrv = servicesList.find(s => s.id === 6) || servicesList[0];
-                  setSelectedService(smartSrv);
-                  setCurrentPage('service-detail');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
-
-              {/* Ajratuvchi chiziq */}
-              <div className="my-6 sm:my-8 border-t border-slate-800/80"></div>
-
-              {/* 4. Qanday ishlaydi & 24/7 Bog'lanish */}
-              <HowItWorks t={t} />
-            </div>
-          </div>
-
-          {/* =========================================================================
               3. MAHSULOTLAR DO'KONI (2 QATOR BO'LIB CHIQADI, "YANA KO'RISH" BOSILGANDA SHU YERNING O'ZIDA KENGAYADI)
               ========================================================================= */}
           <Shop
@@ -1371,27 +1311,6 @@ export default function App() {
                     <span>{t.nav.services}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 text-slate-400" />
-                </button>
-
-                <button 
-                  type="button"
-                  onClick={() => {
-                    setCurrentPage('home');
-                    setIsMobileMenuOpen(false);
-                    setTimeout(() => {
-                      const el = document.getElementById('smart-home');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 50);
-                  }}
-                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs text-amber-800 bg-amber-50/80 hover:bg-amber-100/80 transition-colors border border-amber-200/60"
-                >
-                  <span className="flex items-center gap-2.5">
-                    <span className="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
-                      <Sparkles className="w-3.5 h-3.5" />
-                    </span>
-                    <span>{t.smartHomeSection?.title || "Aqlli uy"} (Smart Home)</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-amber-500" />
                 </button>
 
                 <button 
